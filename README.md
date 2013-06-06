@@ -5,6 +5,8 @@ arvinall.usr.sh
 run setup.sh for install
 run unistall.sh for remove all file on your pc
 
+its a simple front end for AXEL with graphic
+
 first you want to install two packages
 
 1->	 axel
