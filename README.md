@@ -4,13 +4,11 @@ write by [arvinall](http://arvinall.usr.sh)
 
  its a simple front end for AXEL with graphic
 
-   run setup.sh for install
+   for run the wizard first executing `./setup` as program
    
-`./setup.sh`
-   
-   run unistall.sh for remove all file on your pc
-   
-`./unistall.sh`
+    chmod +x ./setup
+
+   then run the setup and install in graphic mode
 
 ## Prerequisite
 
