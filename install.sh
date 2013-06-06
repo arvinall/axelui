@@ -1,29 +1,59 @@
 #!/bin/bash
+echo '1'
+echo '#installing wizard'
 zenity --text-info --filename=license --title='GNU GPL V3' --checkbox='Do you accept the license ?' --height=450 --width=500
-rc=$?
-if [[ $rc = 0 ]] ; then
-    zenity --info --text='plZ enter your password for install'
-function setup {
+if [[ $? = 1 ]] ; then
+	zenity --info --text='This script is under GPL v3 you want to accept it to install !!!'
+	exit
+fi
+
+zenity --version
+if [[ $? = 1 ]]; then
+(
+echo `date`
+echo 'For install axel UI you need to install zenity'
+echo 'If you have Debian/Ubuntu base distro run this command :'
+echo '	sudo apt-get install zenity'
+echo ''
+) >> log
+echo 'find a problem Plz read log file'
+exit
+fi
+
+axel --version
+if [[ $? = 1 ]]; then
+(
+echo `date`
+echo 'For install axel UI you need to install axel'
+echo 'If you have Debian/Ubuntu base distro run this command :'
+echo '	sudo apt-get install axel'
+echo ''
+) >> log
+echo 'find a problem Plz read log file'
+exit
+fi
+
+	zenity --info --text='plZ enter your password for install'
+(
 	echo '20'
 	echo '#Set Permissions'
-    chmod a+x axelfast && chmod a+x axelui
+       chmod a+x axelfast && chmod a+x axelui
 	echo '40'
 	echo '#Copy axelfast'
-    gksudo cp axelfast /usr/bin/axelfast
+       gksudo cp axelfast /usr/bin/axelfast
 	echo '60'
 	echo '#Copy axelui'
-    gksudo cp axelui /usr/bin/axelui
-	echo '80'
+       gksudo cp axelui /usr/bin/axelui
+	echo '70'
 	echo '#Copy urlentry.info'
     gksudo mkdir /usr/share/doc/axelui && gksudo cp urlentry.info /usr/share/doc/axelui/urlentry.info
+	echo '80'
+	echo '#Copy license'
+       gksudo cp license /usr/share/doc/axelui/license
 	echo '99'
 	echo '#Copy axelui.desktop (shortcut)'
-    gksudo cp axelui.desktop /usr/share/applications/axelui.desktop
+       gksudo cp axelui.desktop /usr/share/applications/axelui.desktop
 	echo '100'
 	echo '#Install finished'
-}
-setup | zenity --progress --no-cancel --width=400 --title='installing'
-    zenity --info --text='Install finished'
-else
-    zenity --info --text='This script is under GPL v3 you want to accept it to install !!!'
-fi
+) | zenity --progress --no-cancel --width=400 --title='installing'
+	zenity --info --text='Install finished'
