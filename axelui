@@ -1,0 +1,28 @@
+#!/bin/bash
+version='1.0.0'
+if [ $1 ]; then
+argv=true
+else
+argv=false
+fi
+if [ $argv = true ]; then
+if [ $1 = '--about' ]; then
+echo 'version '$version
+echo 'write by arvinall  http://arvinall.usr.sh'
+echo 'this script a front end for axelfast'
+exit
+else
+for u in $*; do
+	echo $u >> /tmp/axelui.urls
+done
+urls=`zenity --text-info --editable --title='enter urls' --filename=/tmp/axelui.urls`
+fi
+else
+urls=`zenity --text-info --editable --title='enter urls' --filename=/usr/share/doc/axelui/urlentry.info`
+fi
+connections=`zenity --scale --title='connections' --text='plZ enter connections'`
+dir=`zenity --file-selection --filename=/home/$USER/Downloads --save --directory --title='select your directory for save files'`
+cd $dir && axelfast $connections $urls
+echo 'done'
+read
+rm /tmp/axelui.urls

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=axelui
+Name[fa]=دانلود منیجر اکسل
+Comment=Download manager
+Comment[fa]=فایل ها را با سرعت بالا بارگیری کنید
+GenericName=Download Manager
+GenericName[fa]=مدیر دانلود
+Keywords=Internet;Axel;Web;Download;manager;Ui
+Exec=axelui
+Terminal=true
+X-MultipleArgs=false
+Type=Application
+Categories=GNOME;GTK;Network;DownloadManager;
+StartupNotify=true
