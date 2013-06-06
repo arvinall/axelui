@@ -1,0 +1,8 @@
+#!/bin/bash
+zenity --question --ok-label=Install --cancel-label=Remove --text="If you want to install axel UI click on INSTALL\nIf you install axel UI before and now you want to unistall click on REMONE" --title='axel UI Wizard'
+yon=$?
+if [ $yon = 0 ]; then
+./install.sh | zenity --progress --title=W8 --pulsate --auto-close --auto-kill
+else
+./unistall.sh | zenity --progress --title=W8 --pulsate --auto-close --auto-kill
+fi
