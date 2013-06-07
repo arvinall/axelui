@@ -7,32 +7,6 @@ if [[ $? = 1 ]] ; then
 	exit
 fi
 
-zenity --version
-if [[ $? = 1 ]]; then
-(
-echo `date`
-echo 'For install axel UI you need to install zenity'
-echo 'If you have Debian/Ubuntu base distro run this command :'
-echo '	sudo apt-get install zenity'
-echo ''
-) >> log
-echo 'find a problem Plz read log file'
-exit
-fi
-
-axel --version
-if [[ $? = 1 ]]; then
-(
-echo `date`
-echo 'For install axel UI you need to install axel'
-echo 'If you have Debian/Ubuntu base distro run this command :'
-echo '	sudo apt-get install axel'
-echo ''
-) >> log
-echo 'find a problem Plz read log file'
-exit
-fi
-
 	zenity --info --text='plZ enter your password for install'
 (
 	echo '20'
