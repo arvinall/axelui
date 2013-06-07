@@ -1,4 +1,30 @@
 #!/bin/bash
+zenity --version
+if [[ $? != 0 ]]; then
+(
+echo `date`
+echo 'For install axel UI you need to install zenity'
+echo 'If you have Debian/Ubuntu base distro run this command :'
+echo '	sudo apt-get install zenity'
+echo ''
+) >> log
+echo 'find a problem Plz read log file'
+exit
+fi
+
+axel --version
+if [[ $? != 0 ]]; then
+(
+echo `date`
+echo 'For install axel UI you need to install axel'
+echo 'If you have Debian/Ubuntu base distro run this command :'
+echo '	sudo apt-get install axel'
+echo ''
+) >> log
+echo 'find a problem Plz read log file'
+exit
+fi
+
 zenity --question --ok-label=Install --cancel-label=Remove --text="If you want to install axel UI click on INSTALL\nIf you install axel UI before and now you want to unistall click on REMONE" --title='axel UI Wizard'
 yon=$?
 if [ $yon = 0 ]; then
