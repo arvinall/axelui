@@ -3,7 +3,7 @@ echo '1'
 echo '#installing wizard'
 zenity --text-info --filename=license --title='GNU GPL V3' --checkbox='Do you accept the license ?' --height=450 --width=500
 if [[ $? = 1 ]] ; then
-	zenity --info --text='This script is under GPL v3 you want to accept it to install !!!'
+	zenity --info --text='This script is under GPL v3 you should to accept it to install !!!'
 	exit
 fi
 
