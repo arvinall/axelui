@@ -7,26 +7,41 @@ if [[ $? = 1 ]] ; then
 	exit
 fi
 
-	zenity --info --text='plZ enter your password for install'
+	pass=`zenity --password --title='plZ enter your password for install'`
+	if [ $? != 0 ]; then
+		(
+		echo `date`
+		echo 'For install axel UI you need to have root Permission'
+		echo 'Plz enter your password in wizard'
+		echo ''
+		) >> log
+		echo 'find a problem Plz read log file'
+		exit
+	fi
 (
 	echo '20'
 	echo '#Set Permissions'
        chmod a+x axelfast && chmod a+x axelui
+		sleep 0.5
 	echo '40'
 	echo '#Copy axelfast'
-       gksudo cp axelfast /usr/bin/axelfast
+       echo $pass | sudo -S cp axelfast /usr/bin/axelfast
+		sleep 0.5
 	echo '60'
 	echo '#Copy axelui'
-       gksudo cp axelui /usr/bin/axelui
+       echo $pass | sudo -S cp axelui /usr/bin/axelui
+		sleep 0.5
 	echo '70'
 	echo '#Copy urlentry.info'
-    gksudo mkdir /usr/share/doc/axelui && gksudo cp urlentry.info /usr/share/doc/axelui/urlentry.info
+       echo $pass | sudo -S mkdir /usr/share/doc/axelui && echo $pass | sudo -S cp urlentry.info /usr/share/doc/axelui/urlentry.info
+		sleep 0.5
 	echo '80'
 	echo '#Copy license'
-       gksudo cp license /usr/share/doc/axelui/license
+       echo $pass | sudo -S cp license /usr/share/doc/axelui/license
+		sleep 0.5
 	echo '99'
 	echo '#Copy axelui.desktop (shortcut)'
-       gksudo cp axelui.desktop /usr/share/applications/axelui.desktop
+       echo $pass | sudo -S cp axelui.desktop /usr/share/applications/axelui.desktop
 	echo '100'
 	echo '#Install finished'
 ) | zenity --progress --no-cancel --width=400 --title='installing'
