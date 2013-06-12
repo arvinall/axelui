@@ -36,8 +36,8 @@ fi
 	echo '99'
 	echo '#Remove axelui.desktop (shortcut)'
        echo $pass | sudo -S rm /usr/share/applications/axelui.desktop
-		sleep 0.5
+		sleep 0.6
 	echo '100'
 	echo '#Unistall finished'
-) | zenity --progress --no-cancel --width=400 --title='removing'
+) | zenity --progress --no-cancel --width=400 --title='removing' --auto-close
 	zenity --info --text='Unistall finished'

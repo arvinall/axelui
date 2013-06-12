@@ -42,7 +42,8 @@ fi
 	echo '99'
 	echo '#Copy axelui.desktop (shortcut)'
        echo $pass | sudo -S cp axelui.desktop /usr/share/applications/axelui.desktop
+		sleep 0.6
 	echo '100'
 	echo '#Install finished'
-) | zenity --progress --no-cancel --width=400 --title='installing'
+) | zenity --progress --no-cancel --width=400 --title='installing' --auto-close
 	zenity --info --text='Install finished'
